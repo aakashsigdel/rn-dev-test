@@ -1,7 +1,7 @@
 # rn-dev-test
 React Native Developer Test
 ### Auth [POST]
-   https://test.inploi.me/token
+https://test.inploi.me/token
 #### required parameters:
 1. grant_type = 'client_credentials'
 2. client_id = user email
@@ -17,12 +17,68 @@ React Native Developer Test
 }
 ```
 ### Jobs [GET]
-   https://test.inploi.me/jobs
+https://test.inploi.me/jobs
 #### required parameters:
 1. access_token = the access token
 ### Response example
 ```javascript
 {
-  'id' : 1
+    "browse": [
+    {
+        "id": "",
+        "employer_id": "",
+        "type": "",
+        "job_term": "",
+        "role": "",
+        "full_description": "",
+        "key_skills": "",
+        "experience": "",
+        "language": "",
+        "rate": "",
+        "rate_type": "",
+        "masked_rate": "",
+        "tronc": "",
+        "living_wage": ,
+        "multiple": "",
+        "address": "",
+        "location_town": ,
+        "location_city": " ",
+        "postcode": "",
+        "location_country":  ,
+        "latitude": "",
+        "longitude": "",
+        "comments": "",
+        "posted": "",
+        "status": "",
+        "candidates": ,
+        "template": ,
+        "level": "",
+        "connections": "",
+        "unli_connect": "",
+        "updated": "",
+        "published": "",
+        "expired": "",
+        "first_name": "",
+        "company": "",
+        "company_type": "",
+        "employer_img": "",
+        "employer_img_v": "",
+        "company_img": "",
+        "company_img_v": "",
+        "employer_rating": ,
+        "total": ,
+        "applicants": ,
+        "dates": [
+        {
+            "id": "",
+            "job_id": "",
+            "type": "",
+            "start": "",
+            "end": "",
+            "asap": ""
+        }
+        ]
+    }
+]
 }
 ```
