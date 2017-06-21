@@ -3,7 +3,7 @@ React Native Developer Test
 ### Auth [POST]
 https://test.inploi.me/token
 #### required parameters:
-1. grant_type = 'client_credentials'
+1. grant_type = client_credentials
 2. client_id = user email
 3. client_secret = user password
 
