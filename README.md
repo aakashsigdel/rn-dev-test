@@ -1,6 +1,6 @@
 # rn-dev-test
 React Native Developer Test
-### Auth
+### Auth [POST]
    https://test.inploi.me/token
 #### required parameters:
 1. grant_type = 'client_credentials'
@@ -16,7 +16,7 @@ React Native Developer Test
     "scope": null
 }
 ```
-### Endpoint
+### Jobs [GET]
    https://test.inploi.me/jobs
 #### required parameters:
 1. access_token = the access token
