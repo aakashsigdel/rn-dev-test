@@ -67,7 +67,6 @@ https://test.inploi.me/jobs
         "company_img_v": "",
         "employer_rating": ,
         "total": ,
-        "applicants": ,
         "dates": [
         {
             "id": "",
