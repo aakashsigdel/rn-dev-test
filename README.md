@@ -124,6 +124,9 @@ dates.start | Defines the start date.
 dates.end | Defines the end date.
 dates.asap | Defines if the start date is as soon as possible or not (INT: 1 = true || 0 = false). note: - start/end date may be empty if set to true
 
+## Pull requests
+When you are ready to make a pull request, please create a branch with your github username
+
 ## Must work on the following phones/OS versions:
 * Pixel XL
 * iPhone 7
