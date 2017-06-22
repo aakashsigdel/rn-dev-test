@@ -21,7 +21,7 @@ https://test.inploi.me/jobs?token=79ea923ffe51db6e2078822d2c7fd78293eae8ff
 #### required parameters:
 1. access_token = the access token
 ### Pagination
-https://test.inploi.me/jobs/`page_number`?token=79ea923ffe51db6e2078822d2c7fd78293eae8ff
+https://test.inploi.me/jobs/page_number e.g https://test.inploi.me/jobs/5
 The page_number defaults to `1` for the 1st 10 jobs, then you can use `2` for the next 10 jobs etc...
 ### Response example
 ```javascript
