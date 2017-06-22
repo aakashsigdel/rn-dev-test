@@ -1,5 +1,14 @@
 # rn-dev-test
 React Native Developer Test
+
+* [Authentication](#auth-post)
+* [Getting the jobs](#jobs-get)
+* [Getting the jobs](#jobs-get)
+* [Example response](#response-example)
+* [Field descriptions](#field-descriptions)
+* [Pull requests](#pull-requests)
+* [Device & OS support](#must-work-on-the-following-phonesos-versions)
+
 ### Auth [POST]
 https://test.inploi.me/token
 #### required parameters:
