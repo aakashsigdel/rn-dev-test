@@ -81,3 +81,11 @@ https://test.inploi.me/jobs
 ]
 }
 ```
+
+## Must work on the following phones/OS versions:
+1 Pixel XL
+2 iPhone 7
+3 Note 3
+## Must work on the following OS versions:
+1 Android 4.1 - 7.1.2
+2 IOS 9 and above
