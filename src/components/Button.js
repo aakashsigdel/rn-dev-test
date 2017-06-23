@@ -62,6 +62,8 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch'
   },
   buttonStyle: {
+    height: 50,
+    justifyContent: 'center',
     elevation: 4,
     backgroundColor: colors.PRIMARY,
     shadowColor: '#999999',
