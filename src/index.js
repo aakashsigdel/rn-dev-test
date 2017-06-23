@@ -1,15 +1,13 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux'
 
-import rootReducer from './reducers';
 import App from './containers';
-
-const store = createStore(rootReducer);
+import Routes from './Routes';
+import store from './store';
 
 const Root = () =>
   <Provider store={store}>
-    <App />
+    <Routes />
   </Provider>;
 
 export default Root;
