@@ -35,7 +35,7 @@ class Button extends PureComponent {
     }
 
     return(
-      <Touchable onPress={onPress} disabled={disabled}>
+      <Touchable onPress={onPress} disabled={disabled} style={styles.container}>
         <View style={buttonStyle}>
           <Text style={textStyle}>
             { title.toUpperCase() }
@@ -58,6 +58,9 @@ Button.propTypes = {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    alignSelf: 'stretch'
+  },
   buttonStyle: {
     elevation: 4,
     backgroundColor: colors.PRIMARY,
