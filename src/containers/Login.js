@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -27,10 +28,19 @@ TextButton.propTypes = {
 
 const Login = props =>
   <View style={styles.container}>
+    <StatusBar backgroundColor={colors.PRIMARY} />
     <Logo style={styles.logo} />
     <View sytle={styles.form}>
-      <Input type="email" />
-      <Input type="password" />
+      <Input
+        type="email"
+        placeholder="Email address"
+        keyboardType="email-address"
+      />
+      <Input
+        type="password"
+        placeholder="Password"
+        secureTextEntry
+      />
       <TextButton
         onPress={() => null} title="Forgot Password?"
         style={styles.forgotPassword}
@@ -49,7 +59,7 @@ const Login = props =>
 
 Login.navigationOptions = {
   header: null
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -82,6 +92,6 @@ const styles = StyleSheet.create({
   noAccount: {
     alignItems: 'center',
   }
-})
+});
 
 export default Login;

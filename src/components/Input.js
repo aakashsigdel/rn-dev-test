@@ -29,10 +29,11 @@ class Input extends Component {
         {this._renderImage(type)}
         <TextInput
           placeholderTextColor="gray"
-          placeholder="Email address"
+          placeholder={placeholder}
           style={[styles.textInput, style]} {...props}
           tintColor={colors.PRIMARY}
           underlineColorAndroid="transparent"
+          {...props}
         />
       </View>
     );
@@ -43,7 +44,7 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   style: PropTypes.object,
   type: PropTypes.string
-}
+};
 
 const styles = StyleSheet.create({
   container: {
