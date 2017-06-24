@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import Button from '../components/Button';
 import Input from '../components/Input';
 import Logo from '../components/Logo';
+import AnimatedLoader from '../components/AnimatedLoader';
 import colors from '../colors';
 import {
   login,
@@ -32,6 +33,15 @@ TextButton.propTypes = {
   title: PropTypes.string.isRequired
 };
 
+const renderLoginButton = props =>
+  !props.state.login.isLoading
+    ? <Button
+      title="login"
+      onPress={() => props.dispatch(login())}
+      backgroundColor="white"
+      color={colors.FONTCOLOR}
+    />
+    : <AnimatedLoader />;
 const Login = props =>
   <View style={styles.container}>
     <StatusBar backgroundColor={colors.PRIMARY} />
@@ -57,12 +67,7 @@ const Login = props =>
       />
     </View>
     <View style={styles.buttons}>
-      <Button
-        title="login"
-        onPress={() => props.dispatch(login())}
-        backgroundColor="white"
-        color={colors.FONTCOLOR}
-      />
+      {renderLoginButton(props)}
       <TextButton
         onPress={() => null}
         title="Don't have an account?"
