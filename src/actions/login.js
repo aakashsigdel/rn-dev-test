@@ -1,4 +1,4 @@
-import API_HOST from '../constants';
+import { API_HOST } from '../constants';
 
 export const setEmail = email => {
   return {
@@ -14,10 +14,12 @@ export const setPassword = password => ({
 
 const requestLogin = () => ({ type: 'REQUEST_LOGIN' });
 
-const receiveLogin = json => ({
-  type: 'RECEIVE_LOGIN',
-  json
-});
+const receiveLogin = json => {
+  return {
+    type: 'RECEIVE_LOGIN',
+    json
+  }
+};
 
 const errorLogin = error => ({
   type: 'ERROR_LOGIN',
@@ -28,20 +30,20 @@ export const login = () =>
   (dispatch, getState) => {
     dispatch(requestLogin());
     const { email, password } = getState().login;
-    const grant_type = 'client_credentials';
+
+    const formData = new FormData();
+    formData.append('grant_type', 'client_credentials');
+    formData.append('client_id', email);
+    formData.append('client_secret', password);
 
     return fetch(API_HOST + '/token', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'multipart/form-data'
       },
-      body: JSON.stringify({
-        grant_type,
-        client_id: email,
-        client_secret: password
-      })
+      body: formData
     })
     .then(resp => resp.json())
-    .then(receiveLogin)
-    .catch(errorLogin)
+    .then(json => dispatch(receiveLogin(json)))
+    .catch(err => dispatch(errorLogin(err)))
   };

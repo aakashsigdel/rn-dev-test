@@ -39,15 +39,17 @@ const Login = props =>
     <View sytle={styles.form}>
       <Input
         type="email"
+        autoCapitalize="none"
+        autoCorrect={false}
         placeholder="Email address"
         keyboardType="email-address"
-        onChangeText={(email) => props.dispatch(setEmail(email))}
+        onChangeText={(email) => props.dispatch(setEmail('aakash.sigdel@gmail.com'))}
       />
       <Input
         type="password"
         placeholder="Password"
         secureTextEntry
-        onChangeText={password => props.dispatch(setPassword(password))}
+        onChangeText={password => props.dispatch(setPassword('dk5j4uafcF9dabEIpjjbOPTP'))}
       />
       <TextButton
         onPress={() => null} title="Forgot Password?"
@@ -55,13 +57,18 @@ const Login = props =>
       />
     </View>
     <View style={styles.buttons}>
-      <Button title="login" backgroundColor="white" color={colors.FONTCOLOR} />
+      <Button
+        title="login"
+        onPress={() => props.dispatch(login())}
+        backgroundColor="white"
+        color={colors.FONTCOLOR}
+      />
       <TextButton
         onPress={() => null}
         title="Don't have an account?"
         style={styles.noAccount}
       />
-      <Button title="register" />
+      <Button title="register" onPress={() => null} />
     </View>
   </View>;
 
