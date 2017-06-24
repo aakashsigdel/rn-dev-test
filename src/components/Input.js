@@ -23,7 +23,13 @@ class Input extends Component {
   }
 
   render() {
-    const { placeholder, style, type, ...props } = this.props;
+    const {
+      onChangeText,
+      placeholder,
+      style,
+      type,
+      ...props
+    } = this.props;
     return (
       <View style={styles.container}>
         {this._renderImage(type)}
@@ -33,6 +39,7 @@ class Input extends Component {
           style={[styles.textInput, style]} {...props}
           tintColor={colors.PRIMARY}
           underlineColorAndroid="transparent"
+          onChangeText={onChangeText}
           {...props}
         />
       </View>
@@ -43,7 +50,8 @@ class Input extends Component {
 Input.propTypes = {
   placeholder: PropTypes.string,
   style: PropTypes.object,
-  type: PropTypes.string
+  type: PropTypes.string,
+  onChangeText: PropTypes.func.isRequired
 };
 
 const styles = StyleSheet.create({
