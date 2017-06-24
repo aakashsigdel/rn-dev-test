@@ -1,3 +1,5 @@
+import { AsyncStorage } from 'react-native';
+
 import { API_HOST } from '../constants';
 
 export const setEmail = email => {
@@ -26,6 +28,21 @@ const errorLogin = error => ({
   error
 });
 
+const loadAuth = auth => ({
+  type: 'LOAD_AUTH',
+  auth
+});
+
+const saveToAsyncStorage = auth => {
+  const serializedAuth = JSON.stringify(auth);
+  AsyncStorage.setItem(`inploi:auth`, serializedAuth);
+};
+
+export const loadAuthFromStorage = async dispatch => {
+  const serializedAuth = await AsyncStorage.getItem('inpoli:auth');
+  dispatch(loadAuth(JSON.parse(serializedAuth)));
+};
+
 export const login = () =>
   (dispatch, getState) => {
     dispatch(requestLogin());
@@ -44,6 +61,9 @@ export const login = () =>
       body: formData
     })
     .then(resp => resp.json())
-    .then(json => dispatch(receiveLogin(json)))
+    .then(json => {
+      saveToAsyncStorage(json);
+      dispatch(receiveLogin(json));
+    })
     .catch(err => dispatch(errorLogin(err)))
   };
