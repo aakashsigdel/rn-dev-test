@@ -7,11 +7,17 @@ import {
   View
 } from 'react-native';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import Button from '../components/Button';
 import Input from '../components/Input';
 import Logo from '../components/Logo';
 import colors from '../colors';
+import {
+  login,
+  setEmail,
+  setPassword
+} from '../actions/login';
 
 const TextButton = ({onPress, style, title}) =>
   <TouchableOpacity style={[styles.textButton, style]} onPress={onPress}>
@@ -35,11 +41,13 @@ const Login = props =>
         type="email"
         placeholder="Email address"
         keyboardType="email-address"
+        onChangeText={(email) => props.dispatch(setEmail(email))}
       />
       <Input
         type="password"
         placeholder="Password"
         secureTextEntry
+        onChangeText={password => props.dispatch(setPassword(password))}
       />
       <TextButton
         onPress={() => null} title="Forgot Password?"
@@ -94,4 +102,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Login;
+export default connect(state => ({state: state}))(Login);
