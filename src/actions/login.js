@@ -35,13 +35,16 @@ const loadAuth = auth => ({
 
 const saveToAsyncStorage = auth => {
   const serializedAuth = JSON.stringify(auth);
-  AsyncStorage.setItem(`inploi:auth`, serializedAuth);
-};
+  AsyncStorage.setItem('inpoli:auth', serializedAuth);
+}
 
-export const loadAuthFromStorage = async dispatch => {
-  const serializedAuth = await AsyncStorage.getItem('inpoli:auth');
-  dispatch(loadAuth(JSON.parse(serializedAuth)));
-};
+export const loadAuthFromAsyncStorage = () =>
+  dispatch => {
+    return AsyncStorage.getItem('inpoli:auth')
+      .then(resp => resp === null ? null : JSON.parse(resp))
+      .then(json => dispatch(loadAuth(json)))
+  }
+
 
 export const login = () =>
   (dispatch, getState) => {
