@@ -35,6 +35,11 @@ const login = (state = initialState, action) => {
         error: action.error,
         isLoading: false
       }
+    case 'LOAD_AUTH':
+      return {
+        ...state,
+        auth: action.auth
+      }
   }
   return state;
 }

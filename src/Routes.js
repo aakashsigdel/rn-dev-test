@@ -1,11 +1,13 @@
 import { StackNavigator } from 'react-navigation';
 
-import App from './containers';
+import Home from './containers';
 import Login from './containers/Login';
+import App from './containers/App';
 
 const Routes = StackNavigator({
+  home: { screen: Home },
+  app: { screen: App },
   login: { screen: Login },
-  home: { screen: App },
 }, {
   cardStyle: {backgroundColor: 'white'}
 });

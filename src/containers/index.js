@@ -1,7 +1,66 @@
-import React from 'react';
-import { Text } from 'react-native';
+import React, { Component } from 'react';
+import {
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
+import { connect } from 'react-redux';
+import { NavigationActions } from 'react-navigation';
 
-const App = props =>
-  <Text>Inploi</Text>;
+import { loadAuthFromAsyncStorage } from '../actions/login';
+import colors from '../colors';
 
-export default App;
+class App extends Component {
+  static navigationOptions = {
+    header: null
+  }
+
+  componentDidMount () {
+    const {state, navigation} = this.props;
+    const resetAction = routeName => NavigationActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({ routeName })
+      ]
+    });
+    this.props.dispatch(loadAuthFromAsyncStorage())
+      .then((res) => {
+        if (res.auth) {
+          this.props.navigation.dispatch(resetAction('app'));
+        } else {
+          this.props.navigation.dispatch(resetAction('login'));
+        }
+      });
+  }
+
+  componentWillReceiveProps (nextProps) {
+    // const {state, navigation} = nextProps;
+    // const resetAction = routeName => NavigationActions.reset({
+    //   index: 0,
+    //   actions: [
+    //     NavigationActions.navigate({ routeName })
+    //   ]
+    // });
+    // if (!state.login.auth) {
+    //   this.props.navigation.dispatch(resetAction('login'));
+    // } else {
+    //   this.props.navigation.dispatch(resetAction('app'));
+    // }
+  }
+
+  render () {
+    return (
+      <View style={styles.container} />
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.PRIMARY
+  }
+})
+
+const mapStateToProps = state => ({ state: state });
+export default connect(mapStateToProps)(App);
