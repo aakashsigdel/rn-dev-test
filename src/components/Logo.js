@@ -1,14 +1,16 @@
 import React from 'react';
-import { Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 
 import logo from '../../assets/images/logo-red.png';
 
 const Logo = ({style, ...props}) =>
-  <Image
-    source={logo}
-    style={[styles.logo, style]}
-    {...props}
-  />;
+  <View style={style}>
+    <Image
+      source={logo}
+      style={styles.logo}
+      {...props}
+    />
+  </View>;
 
 const styles = StyleSheet.create({
   logo: {
