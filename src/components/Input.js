@@ -32,6 +32,7 @@ class Input extends Component {
           placeholder="Email address"
           style={[styles.textInput, style]} {...props}
           tintColor={colors.PRIMARY}
+          underlineColorAndroid="transparent"
         />
       </View>
     );
