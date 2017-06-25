@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import {
+  ActivityIndicator,
+  FlatList,
+  StatusBar,
+  StyleSheet,
+  View
+} from 'react-native';
 import { connect } from 'react-redux';
 
 import { fetchJobs } from '../actions/jobs';
 import Job from '../components/Job';
+import colors from '../colors';
 
 class Jobs extends Component {
   constructor () {
@@ -11,7 +18,14 @@ class Jobs extends Component {
     this.count = 1;
   }
 
+  static navigationOptions = {
+    headerStyle: {backgroundColor: colors.PRIMARY},
+    headerTitle: 'inPloi',
+    headerTintColor: 'white'
+  }
+
   componentDidMount () {
+    StatusBar.setBarStyle('light-content');
     this.props.dispatch(fetchJobs(this.count));
   }
 
@@ -25,6 +39,15 @@ class Jobs extends Component {
 
   render () {
     const { jobs } = this.props.state.jobs;
+    if (this.props.state.jobs.isLoading) {
+      return (
+        <View style={[styles.container, styles.fakeContainer]}>
+          <Job />
+          <Job />
+          <Job />
+        </View>
+      )
+    }
     return (
         <FlatList
           data={jobs}
@@ -47,6 +70,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F6F7FB'
+  },
+  fakeContainer: {
+    alignItems: 'center'
   }
 });
 

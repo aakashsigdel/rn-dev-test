@@ -9,7 +9,7 @@ const jobs = (state = initialState, action) => {
     case 'REQUEST_JOBS':
       return {
         ...state,
-        isLoading: true
+        isLoading: action.page === 1 ? true : false
       }
     case 'RECEIVE_JOBS':
       return {

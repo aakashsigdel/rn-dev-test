@@ -1,8 +1,9 @@
 import { API_HOST } from '../constants';
 import { login } from './login';
 
-const requestJobs = () => ({
-  type: 'REQUEST_JOBS'
+const requestJobs = page => ({
+  type: 'REQUEST_JOBS',
+  page
 });
 
 const receiveJobs = jobs => ({
@@ -28,7 +29,7 @@ export const fetchJobs = page =>
     if (getState().jobs.lastPage) {
       return
     }
-    dispatch(requestJobs());
+    dispatch(requestJobs(page));
 
     const URL = API_HOST
       + '/jobs'
