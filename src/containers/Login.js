@@ -52,7 +52,7 @@ class Login extends Component {
         title="login"
         onPress={() => props.login()}
         backgroundColor="white"
-        color={colors.FONTCOLOR}
+        color={colors.FONTMEDIUM}
       />
       : <AnimatedLoader />;
   }

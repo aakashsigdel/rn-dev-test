@@ -19,8 +19,15 @@ const clearJobs = () => ({
   type: 'CLEAR_JOBS'
 });
 
+const setLastPage = () => ({
+  type: 'SET_LAST_PAGE'
+});
+
 export const fetchJobs = page =>
   (dispatch, getState) => {
+    if (getState().jobs.lastPage) {
+      return
+    }
     dispatch(requestJobs());
 
     const URL = API_HOST
@@ -40,9 +47,15 @@ export const fetchJobs = page =>
           dispatch(clearJobs());
           dispatch(login())
           .then(() => dispatch(fetchJobs(1)));
-          return
+          return;
         }
-        dispatch(receiveJobs(json.browse))
+        const currentJobsLength = getState().jobs.jobs.length;
+        const newJobsLength = json.browse.length;
+        const totalJobsLength = currentJobsLength + newJobsLength;
+        if (totalJobsLength === currentJobsLength) {
+          dispatch(setLastPage());
+        }
+        dispatch(receiveJobs(json.browse));
       })
       .catch(error => dispatch(errorJobs(error)));
   }

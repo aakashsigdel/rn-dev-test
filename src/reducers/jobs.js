@@ -1,7 +1,8 @@
 const initialState = {
   isLoading: false,
   error: null,
-  jobs: []
+  jobs: [],
+  lastPage: false
 }
 const jobs = (state = initialState, action) => {
   switch(action.type) {
@@ -27,6 +28,11 @@ const jobs = (state = initialState, action) => {
         ...state,
         jobs: [],
         isLoading: false
+      }
+    case 'SET_LAST_PAGE':
+      return {
+        ...state,
+        lastPage: true
       }
   }
 
