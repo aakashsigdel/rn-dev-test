@@ -22,6 +22,12 @@ const jobs = (state = initialState, action) => {
         isLoading: false,
         error: action.error
       }
+    case 'CLEAR_JOBS':
+      return {
+        ...state,
+        jobs: [],
+        isLoading: false
+      }
   }
 
   return state;

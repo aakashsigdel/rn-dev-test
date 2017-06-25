@@ -1,4 +1,5 @@
 import { API_HOST } from '../constants';
+import { login } from './login';
 
 const requestJobs = () => ({
   type: 'REQUEST_JOBS'
@@ -14,6 +15,10 @@ const errorJobs = error => ({
   error
 });
 
+const clearJobs = () => ({
+  type: 'CLEAR_JOBS'
+});
+
 export const fetchJobs = page =>
   (dispatch, getState) => {
     dispatch(requestJobs());
@@ -26,6 +31,18 @@ export const fetchJobs = page =>
 
     return fetch(URL)
       .then(resp => resp.json())
-      .then(json => dispatch(receiveJobs(json.browse)))
+      .then(json => {
+        // putting this logic here instead of a middleware
+        // because currently there is no way to refresh a
+        // token and there is no proper status code returned
+        // for a expired token
+        if (json.error === 'invalid_token') {
+          dispatch(clearJobs());
+          dispatch(login())
+          .then(() => dispatch(fetchJobs(1)));
+          return
+        }
+        dispatch(receiveJobs(json.browse))
+      })
       .catch(error => dispatch(errorJobs(error)));
   }
