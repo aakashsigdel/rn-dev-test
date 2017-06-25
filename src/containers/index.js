@@ -23,29 +23,15 @@ class App extends Component {
         NavigationActions.navigate({ routeName })
       ]
     });
+
     this.props.dispatch(loadAuthFromAsyncStorage())
       .then((res) => {
         if (res.auth) {
-          this.props.navigation.dispatch(resetAction('app'));
+          this.props.navigation.dispatch(resetAction('jobs'));
         } else {
           this.props.navigation.dispatch(resetAction('login'));
         }
       });
-  }
-
-  componentWillReceiveProps (nextProps) {
-    // const {state, navigation} = nextProps;
-    // const resetAction = routeName => NavigationActions.reset({
-    //   index: 0,
-    //   actions: [
-    //     NavigationActions.navigate({ routeName })
-    //   ]
-    // });
-    // if (!state.login.auth) {
-    //   this.props.navigation.dispatch(resetAction('login'));
-    // } else {
-    //   this.props.navigation.dispatch(resetAction('app'));
-    // }
   }
 
   render () {

@@ -40,7 +40,7 @@ class Login extends Component {
       const resetAction = NavigationActions.reset({
           index: 0,
           actions: [
-            NavigationActions.navigate({ routeName: 'app' })
+            NavigationActions.navigate({ routeName: 'jobs' })
           ]
       });
       this.props.navigation.dispatch(resetAction);

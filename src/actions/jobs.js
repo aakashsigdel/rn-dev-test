@@ -1,4 +1,4 @@
-import { API_HOST } from '../api';
+import { API_HOST } from '../constants';
 
 const requestJobs = () => ({
   type: 'REQUEST_JOBS'
@@ -26,6 +26,6 @@ export const fetchJobs = page =>
 
     return fetch(URL)
       .then(resp => resp.json())
-      .then(json => dispatch(receiveJobs(json)))
+      .then(json => dispatch(receiveJobs(json.browse)))
       .catch(error => dispatch(errorJobs(error)));
   }
